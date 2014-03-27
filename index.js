@@ -1,5 +1,5 @@
 var isInternalFunction = function( propName, obj ){
-    return obj.hasOwnProperty(propName);    
+    return obj.hasOwnProperty(propName) && (typeof obj[propName] === 'function');    
 }
 
 module.exports = function( data ){
