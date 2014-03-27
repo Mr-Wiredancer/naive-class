@@ -1,0 +1,18 @@
+{
+  "name": "class",
+  "version": "0.0.0",
+  "description": "class system",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "class"
+  ],
+  "author": "Mr. Wiredancer",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.18.2"
+  }
+}
