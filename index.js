@@ -32,16 +32,26 @@ module.exports = function( data, parent ){
         } 
     }
 
+    var current_class = c;
+
     c.prototype.super = function(funcName){
+
         if (!(funcName && (typeof funcName === 'string'))){
             throw "You should have at least one argument of type 'string'";    
         }
 
-        if (c.__super__.prototype[funcName]){
-            return c.__super__.prototype[funcName].apply(this, [].slice.call(arguments, 1))
+        var save = current_class;
+        current_class = current_class.__super__ ;
+
+        var result;
+        if (current_class.prototype[funcName]){
+            result = current_class.prototype[funcName].apply(this, [].slice.call(arguments, 1))
         }else{
-            return c.__super__.prototype.super.apply(this, arguments);
+            result = current_class.prototype.super.apply(this, arguments);
         }
+
+        current_class = save;
+        return result;
     }
 
     return c;
