@@ -26,6 +26,9 @@ module.exports = function( data, parent ){
 
     if (parent){
         extend(c, parent);    
+        c.__super__ = parent;
+    }else{
+        c.__super__ = Object;    
     }
 
     return c;
